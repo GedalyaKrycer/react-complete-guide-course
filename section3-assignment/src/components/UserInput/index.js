@@ -4,7 +4,11 @@ import "./style.css";
 export default class UserInput extends Component {
     render() {
         return (
-            <input type="text" onChange={this.props.handleChange} placeholder="Name…"/>
+            <input 
+            type="text" 
+            onChange={this.props.handleChange} 
+            value={this.props.currentName}
+            placeholder="Name…"/>
         )
     }
 }

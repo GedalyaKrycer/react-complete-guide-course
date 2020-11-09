@@ -25,18 +25,26 @@ class App extends Component {
     }
 
     const containerStyle = {
-       maxWidth: 400,
-       
-       margin: "0 auto"
+      maxWidth: 400,
+      margin: "0 auto"
     }
 
     return (
       <div style={bgStyle}>
         <div style={containerStyle}>
 
-          <UserInput handleChange={this.handleUserChange} />
+          <UserInput
+            handleChange={this.handleUserChange}
+            currentName={this.state.userName}
+          />
           <UserOutput userName={this.state.userName}
-            bio={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae reiciendis optio expedita aliquid modi repudiandae voluptate quibusdam. Soluta libero aliquam deserunt dolores aperiam cum id minus incidunt? Reiciendis, distinctio doloribus!'}
+            bio={'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
+          />
+          <UserOutput userName={this.state.userName}
+            bio={'Vitae reiciendis optio expedita aliquid modi repudiandae voluptate quibusdam.'}
+          />
+          <UserOutput userName={this.state.userName}
+            bio={'Soluta libero aliquam deserunt dolores aperiam cum id minus incidunt? Reiciendis, distinctio doloribus!'}
           />
         </div>
 
