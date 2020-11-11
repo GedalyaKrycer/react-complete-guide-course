@@ -1,0 +1,18 @@
+.chars {
+    display: inline-block;
+    padding: 16px;
+    text-align: center;
+    margin: 16px;
+    cursor: pointer;
+    border: none;
+    color: rgb(204, 255, 204);
+    background: rgb(0, 170, 28);
+    box-shadow: 0 2px 10px rgba(3, 109, 20, 0.445);
+    transition: ease-in-out .4s;
+}
+
+.chars:hover {
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(3, 109, 20, 0.245);
+    transform: scale(1.2);
+}
