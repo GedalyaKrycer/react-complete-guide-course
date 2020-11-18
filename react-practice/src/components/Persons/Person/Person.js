@@ -3,11 +3,7 @@ import classes from './persons.module.css'
 
 const Person = ({ name, age, click, changed, children }) => {
 
-    const rnd = Math.random();
 
-    if (rnd > 0.7) {
-        throw new Error('Something went wrong');
-    }
     return (
 
 
