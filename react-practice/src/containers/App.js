@@ -5,6 +5,11 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log('[App.js] constructor')
+
+  }
 
   state = {
     persons: [
@@ -13,9 +18,31 @@ class App extends Component {
       { name: 'Peter', age: 28, id: 123 }
     ],
     otherState: true,
-    showPersons: false
+    showPersons: false,
+    showCockpit: true
   }
 
+  // static getDerivedStateFromProps(props, state) {
+  //   console.log('[App.js] getDerivedStateFromProps', props);
+  //   return state;
+  // }
+
+  // componentWillMount() {
+  //   console.log('[App.js] componentWillMount');
+  // }
+
+  componentDidMount() {
+    console.log('[App.js] componentDidMount');
+  }
+
+  componentDidUpdate() {
+    console.log('[App.js] componentDidUpdate');
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[App.js] shouldComponentUpdate');
+    return true;
+  }
 
   // Function to delete items from the state object's array. 
   // Takes in the index of the item being clicked, which is provided by the map method 
@@ -76,6 +103,8 @@ class App extends Component {
 
   render() {
 
+    console.log('[App.js] render');
+
     let persons = null;
 
     if (this.state.showPersons) {
@@ -96,13 +125,13 @@ class App extends Component {
     return (
 
       <>
-        <Cockpit
+        <button onClick={() => { this.setState({ showCockpit: false }) }}>Remove Cockpit</button>
+        { this.state.showCockpit ? <Cockpit
           showPersons={this.state.showPersons}
-          persons={this.state.persons}
+          personsLength={this.state.persons.length}
           clicked={this.togglePersonsHandler}
           title={this.props.appTitle}
-        />
-
+        /> : null}
         { persons}
       </>
     );
