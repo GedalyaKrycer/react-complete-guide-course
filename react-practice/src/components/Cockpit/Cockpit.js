@@ -1,9 +1,16 @@
-import React, { useEffect } from 'react';
-import classes from './cockpit.module.css'
+import React, { useEffect, useRef, useContext } from 'react';
+import classes from './cockpit.module.css';
+import AuthContext from '../../context/auth-context';
 
 
 
-const Cockpit = ({ showPersons, personsLength, clicked, title }) => {
+const Cockpit = ({ showPersons, personsLength, clicked, title, handleLogin }) => {
+
+    const toggleBtnRef = useRef(null);
+    const authContext = useContext(AuthContext);
+
+    console.log(authContext.authenticated);
+
 
     // CSS Classes Array that will hold class names
     const assignedClasses = [];
@@ -24,11 +31,12 @@ const Cockpit = ({ showPersons, personsLength, clicked, title }) => {
 
     useEffect(() => {
         console.log('[Cockpit.js] 1st useEffect');
-        // Http request…
 
-        setTimeout(() => {
-            alert('Saved data to cloud');
-        }, 1000)
+        // setTimeout(() => {
+        //     alert('Saved data to cloud');
+        // }, 1000)
+
+        toggleBtnRef.current.click();
 
         return () => {
             console.log('[Cockpit.js] Cleanup work in useEffect');
@@ -51,9 +59,11 @@ const Cockpit = ({ showPersons, personsLength, clicked, title }) => {
             <button
                 className={btnClass}
                 onClick={clicked}
+                ref={toggleBtnRef}
             >
                 Toggle Content
         </button>
+            <button onClick={authContext.login}>Log In</button>
         </div>
     );
 };
