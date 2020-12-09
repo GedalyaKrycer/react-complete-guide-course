@@ -1,36 +1,46 @@
-import React from 'react';
-import Aux from '../../../hoc/Aux';
+import React, { Component } from 'react';
+import Aux from '../../../hoc/Aux/Aux';
 import Button from '../../UI/Button/Button';
 
-const OrderSummary = (props) => {
+class OrderSummary extends Component {
 
-    const ingredientSummary = Object.keys(props.ingredients)
-        .map(igKey => {
-            return <li key={igKey}>
-                <span style={{ textTransform: 'capitalize' }}>{igKey}</span>: {props.ingredients[igKey]}
-            </li>
-        })
+    componentDidUpdate() {
+        console.log('[Order Summary]: Will Update');
+    }
 
-    return (
-        <Aux>
-            <h3>Your Order</h3>
-            <p>A delicious burger with the following ingredients:</p>
+    render() {
 
-            <ul>
-                {ingredientSummary}
-            </ul>
+        const ingredientSummary = Object.keys(this.props.ingredients)
+            .map(igKey => {
+                return <li key={igKey}>
+                    <span style={{ textTransform: 'capitalize' }}>{igKey}</span>: {this.props.ingredients[igKey]}
+                </li>
+            })
 
-            <p><strong>Total Price: ${props.price.toFixed(2)}</strong></p>
+        return (
+            <Aux>
+                <h3>Your Order</h3>
+                <p>A delicious burger with the following ingredients:</p>
 
-            <p>Continue to Checkout?</p>
-            <Button
-                btnType="Danger"
-                clicked={props.purchasedCanceled}>Cancel</Button>
-            <Button
-                btnType="Success"
-                clicked={props.purchasedContinued}>Continue</Button>
-        </Aux>
-    )
+                <ul>
+                    {ingredientSummary}
+                </ul>
+
+                <p><strong>Total Price: ${this.props.price.toFixed(2)}</strong></p>
+
+                <p>Continue to Checkout?</p>
+                <Button
+                    btnType="Danger"
+                    clicked={this.props.purchasedCanceled}>Cancel</Button>
+                <Button
+                    btnType="Success"
+                    clicked={this.props.purchasedContinued}>Continue</Button>
+            </Aux>
+        )
+    }
+
+
+
 }
 
 export default OrderSummary;
