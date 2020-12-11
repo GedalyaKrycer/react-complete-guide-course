@@ -18,15 +18,14 @@ class Course extends Component {
 
     queryRender = () => {
         const query = new URLSearchParams(this.props.location.search);
-
-        let queryTitle = null;
+        ;
 
         for (let params of query.entries()) {
-            queryTitle = params[1]
-        }
 
-        if (this.state.title !== queryTitle) {
-            this.setState({ title: queryTitle })
+            if (this.state.title !== params[1]) {
+                this.setState({ title: params[1] })
+            }
+
         }
 
     }
