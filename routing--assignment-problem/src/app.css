@@ -1,0 +1,19 @@
+nav {
+    display: grid;
+    margin: 10px auto;
+    width: 220px;
+    grid-gap: 5px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+nav a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+nav a:active,
+nav a.active,
+nav a:hover {
+    color: green;
+    text-decoration: underline;
+}
