@@ -1,15 +1,14 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-
+import React, { useCallback, useContext } from 'react';
+import { ProductsContext } from '../../context/products-context';
 import Card from '../UI/Card';
 import './ProductItem.css';
-import { toggleFav } from '../../store/actions/products';
 
 const ProductItem = props => {
-  const dispatch = useDispatch();
+
+  const toggleFav = useCallback(ProductsContext).toggleFav;
 
   const toggleFavHandler = () => {
-    dispatch(toggleFav(props.id));
+    toggleFav(props.id);
   };
 
   return (
